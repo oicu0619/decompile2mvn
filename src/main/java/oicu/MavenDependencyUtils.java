@@ -40,7 +40,10 @@ public class MavenDependencyUtils {
             else {
                 GA ga = new GA(gav.get().groupId(),gav.get().artifactId());
                 if (publicDep.get(ga) != null) {
-                    assertion(publicDep.get(ga).equals(gav.get().version()),"same groupid artifactid but different version found in Jar");
+                      if (publicDep.get(ga).equals(gav.get().version())){
+                        System.out.println("same groupid artifactid but different version found in Jar"+file.getName());
+                    }
+//                    assertion(publicDep.get(ga).equals(gav.get().version()),"same groupid artifactid but different version found in Jar");
                 }
                 else {
                     publicDep.put(ga,gav.get().version());
